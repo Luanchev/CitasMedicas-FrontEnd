@@ -1,0 +1,18 @@
+<div *ngIf="medico"></div>
+<div class ="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <mat-card>
+            <img src="https://img.freepik.com/vector-gratis/cruz-medica-vector-diseno-logotipo-hospital_53876-136743.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1727049600&semt=ais_hybrid" alt="Imagen de clinica" class="SaludImage">
+          </mat-card>
+            <h1> {{medico.NOMBRE}} {{medico.APELLIDO}}
+          </h1>
+            <p>{{medico.ESPECIALIDAD}}</p>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <app-gestionCitas-form [medico]="medico"></app-gestionCitas-form>
+
+        </div>
+    </div>
+</div>
+

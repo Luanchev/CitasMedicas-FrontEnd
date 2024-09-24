@@ -1,0 +1,51 @@
+<form class="gestionCitas-Form" [formGroup]="citaForm"  >
+
+  <h1>Ingresa los datos para solicitar tu cita</h1>
+  <div>
+    <mat-form-field>
+      <mat-label>Cedula</mat-label>
+      <input type="text" formControlName="CEDULA" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input type="text" formControlName="PACIENTE_NOMBRE" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input type="text" formControlName="PACIENTE_APELLIDO" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" formControlName="PACIENTE_EMAIL" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefono</mat-label>
+      <input type="number" formControlName="PACIENTE_CELULAR" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Hora disponible</mat-label>
+          <mat-select formControlName="DISPONIBILIDAD">
+              <mat-option *ngFor= "let disponibilidad of medico.DISPONIBILIDAD" [value]="disponibilidad.id">
+                  {{disponibilidad.horaInicial}}
+              </mat-option>
+          </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Día</mat-label>
+      <input matInput [matDatepicker]="date" formControlName="FECHA_CITA">
+      <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+      <mat-datepicker #date></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="text-right">
+      <button (click)="sendCita()" type="submit" mat-button color="primary" [disabled]="!citaForm.valid">Solicitar Cita Medica</button>
+  </div>
+
+</form>

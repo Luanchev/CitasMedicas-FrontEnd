@@ -1,0 +1,15 @@
+/* Estilo normal de la lista de médicos */
+.list-group-item {
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo cuando se selecciona un médico */
+.selected {
+  background-color: #d1e7dd; /* Color de fondo para médico seleccionado */
+  border: 2px solid #0d6efd; /* Borde azul para resaltar */
+}
+
+.card-theme{
+margin-top: 30px
+}

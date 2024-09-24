@@ -1,0 +1,40 @@
+<div class="container">
+  <!-- Título -->
+  <h2>Selecciona una Especialización</h2>
+
+  <!-- Select para seleccionar especialización -->
+  <div class="form-group">
+    <label for="especialidad">Especialización</label>
+    <select id="especialidad" class="form-control" [(ngModel)]="especialidadSeleccionada" (change)="onEspecialidadChange()">
+      <option value="" disabled selected>Selecciona una especialización</option>
+      <!-- Lista de especializaciones dinámicamente generada -->
+      <!--<option *ngFor="let medico of medicos" [value]="medico.ESPECIALIDAD">{{ medico.ESPECIALIDAD }}</option>-->
+      <option *ngFor="let especialidad of especialidades" [value]="especialidad">{{ especialidad }}</option>
+    </select>
+  </div>
+
+  <!-- Lista de médicos filtrada por especialización seleccionada -->
+  <div *ngIf="medicosFiltrados.length > 0">
+    <h3>Médicos disponibles</h3>
+    <ul class="list-group">
+      <li *ngFor="let medico of medicosFiltrados" class="list-group-item"
+        class="list-group-item"
+          [class.selected]="medicoSeleccionado == medico"
+          (click)="onSelectMedico(medico)">
+        Dr. {{ medico.NOMBRE }} {{ medico.APELLIDO }} - Especialidad: {{ medico.ESPECIALIDAD }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mensaje si no hay médicos disponibles para la especialización seleccionada -->
+  <div *ngIf="medicosFiltrados.length === 0 && especialidadSeleccionada">
+    <p>No hay médicos disponibles para esta especialización.</p>
+  </div>
+<!-- Botón para ir al formulario -->
+  <mat-card-actions>
+    <button mat-button [disabled]="!medicoSeleccionado"
+            [routerLink]="['gestioncitas', medicoSeleccionado?.MEDICO_ID]">
+      SOLICITAR CITA
+    </button>
+  </mat-card-actions>
+</div>
