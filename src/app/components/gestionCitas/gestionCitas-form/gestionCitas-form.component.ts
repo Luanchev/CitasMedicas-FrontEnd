@@ -55,6 +55,7 @@ export class GestionCitasFormComponent implements OnInit {
       this.openDialog("Error", errorMessage); //muestra el dialogo de error
     }
   );
+  this.citaForm.reset(); //borramos el form despues de enviar la cita
   }
 
   setCita(){
